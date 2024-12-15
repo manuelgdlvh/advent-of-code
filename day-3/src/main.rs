@@ -159,7 +159,6 @@ impl<'a> InstructionMul<'a> {
             self.header.clear();
             left_buffer.clear();
             right_buffer.clear();
-            current_buffer = &mut left_buffer;
         }
 
 
@@ -177,6 +176,9 @@ fn main() -> anyhow::Result<()> {
     let mut instruction_mul = InstructionMul::new(input);
 
     println!("{:?}", instruction_mul.process()?);
+    println!("{:?}", instruction_mul.process()?);
+    println!("{:?}", instruction_mul.process()?);
+
     Ok(())
 }
 
