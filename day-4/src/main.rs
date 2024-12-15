@@ -31,7 +31,7 @@ pub fn main() {
             }
 
             let mut movements: [Option<MatrixDirection>; 8] = MatrixDirection::all();
-            for move_num in 1..word.len() {
+            for movement_num in 1..word.len() {
                 movements.iter_mut()
                     .for_each(|val| {
                         if val.is_none() {
@@ -39,8 +39,8 @@ pub fn main() {
                         }
 
                         let mut result = false;
-                        if let Ok((new_i, new_j)) = val.unwrap().move_(i, j, move_num as isize) {
-                            result = input[new_i][new_j].eq(&rest_chars[move_num - 1]);
+                        if let Ok((new_i, new_j)) = val.unwrap().move_(i, j, movement_num as isize) {
+                            result = input[new_i][new_j].eq(&rest_chars[movement_num - 1]);
                         }
 
                         if !result {
@@ -87,37 +87,37 @@ impl MatrixDirection {
             Some(MatrixDirection::DownRight),
         ]
     }
-    pub fn move_(&self, i: usize, j: usize, steps: isize) -> anyhow::Result<(usize, usize)> {
+    pub fn move_(&self, i: usize, j: usize, movement_num: isize) -> anyhow::Result<(usize, usize)> {
         let mut new_i: isize = i as isize;
         let mut new_j: isize = j as isize;
         match self {
             MatrixDirection::Up => {
-                new_i -= steps;
+                new_i -= movement_num;
             }
             MatrixDirection::Down => {
-                new_i += steps;
+                new_i += movement_num;
             }
             MatrixDirection::Left => {
-                new_j -= steps;
+                new_j -= movement_num;
             }
             MatrixDirection::Right => {
-                new_j += steps;
+                new_j += movement_num;
             }
             MatrixDirection::UpRight => {
-                new_i -= steps;
-                new_j += steps;
+                new_i -= movement_num;
+                new_j += movement_num;
             }
             MatrixDirection::DownRight => {
-                new_i += steps;
-                new_j += steps;
+                new_i += movement_num;
+                new_j += movement_num;
             }
             MatrixDirection::UpLeft => {
-                new_i -= steps;
-                new_j -= steps;
+                new_i -= movement_num;
+                new_j -= movement_num;
             }
             MatrixDirection::DownLeft => {
-                new_i += steps;
-                new_j -= steps;
+                new_i += movement_num;
+                new_j -= movement_num;
             }
         }
 
