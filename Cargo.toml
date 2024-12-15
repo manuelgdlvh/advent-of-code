@@ -1,0 +1,20 @@
+[package]
+name = "advent-of-code"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0.94"
+
+
+[[bin]]
+name = "day-1"
+path = "day-1/src/main.rs"
+
+[[bin]]
+name = "day-2"
+path = "day-2/src/main.rs"
+
+[[bin]]
+name = "day-3"
+path = "day-3/src/main.rs"
