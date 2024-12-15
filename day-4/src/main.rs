@@ -31,7 +31,7 @@ pub fn main() {
             }
 
             let mut movements: [Option<MatrixDirection>; 8] = MatrixDirection::all();
-            for iter in 1..word.len() {
+            for move_num in 1..word.len() {
                 movements.iter_mut()
                     .for_each(|val| {
                         if val.is_none() {
@@ -39,8 +39,8 @@ pub fn main() {
                         }
 
                         let mut result = false;
-                        if let Ok((new_i, new_j)) = val.unwrap().move_(i, j, iter as isize) {
-                            result = input[new_i][new_j].eq(&rest_chars[iter - 1]);
+                        if let Ok((new_i, new_j)) = val.unwrap().move_(i, j, move_num as isize) {
+                            result = input[new_i][new_j].eq(&rest_chars[move_num - 1]);
                         }
 
                         if !result {
